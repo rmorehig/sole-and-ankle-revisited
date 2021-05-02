@@ -1,10 +1,12 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React from "react";
+import styled from "styled-components/macro";
 
-import { COLORS, WEIGHTS } from '../../constants';
-import Logo from '../Logo';
-import SuperHeader from '../SuperHeader';
-import MobileMenu from '../MobileMenu';
+import { COLORS, QUERIES, WEIGHTS } from "../../constants";
+import Logo from "../Logo";
+import SuperHeader from "../SuperHeader";
+import MobileMenu from "../MobileMenu";
+import Icon from "../Icon";
+import VisuallyHidden from "../VisuallyHidden";
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -30,6 +32,20 @@ const Header = () => {
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
         <Side />
+        <MobileNav>
+          <IconButton>
+            <Icon id="shopping-bag" />
+            <VisuallyHidden>Go to shopping bag</VisuallyHidden>
+          </IconButton>
+          <IconButton>
+            <Icon id="search" />
+            <VisuallyHidden>Search product</VisuallyHidden>
+          </IconButton>
+          <IconButton>
+            <Icon id="menu" />
+            <VisuallyHidden>Open menu</VisuallyHidden>
+          </IconButton>
+        </MobileNav>
       </MainHeader>
 
       <MobileMenu
@@ -39,7 +55,15 @@ const Header = () => {
     </header>
   );
 };
-
+const IconButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+`;
 const MainHeader = styled.div`
   display: flex;
   align-items: baseline;
@@ -52,6 +76,20 @@ const Nav = styled.nav`
   display: flex;
   gap: 48px;
   margin: 0px 48px;
+  @media ${QUERIES.tabletAndDown} {
+    display: none;
+  }
+`;
+
+const MobileNav = styled.nav`
+  display: none;
+  @media ${QUERIES.tabletAndDown} {
+    display: flex;
+    gap: 32px;
+  }
+  @media ${QUERIES.phoneAndDown} {
+    gap: 16px;
+  }
 `;
 
 const Side = styled.div`
