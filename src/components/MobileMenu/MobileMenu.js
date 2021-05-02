@@ -3,8 +3,6 @@ import React from "react";
 import styled from "styled-components/macro";
 import { DialogOverlay, DialogContent } from "@reach/dialog";
 
-import { COLORS, QUERIES, WEIGHTS } from "../../constants";
-
 import UnstyledButton from "../UnstyledButton";
 import Icon from "../Icon";
 import VisuallyHidden from "../VisuallyHidden";
@@ -18,10 +16,10 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
     <Overlay isOpen={isOpen} onDismiss={onDismiss}>
       <Content aria-label="Mobile Menu">
         <ChildrenWrapper>
-          <CloseButton onClick={onDismiss}>
+          <UnstyledButton onClick={onDismiss}>
             <Icon id="close" />
             <VisuallyHidden>Dismiss menu</VisuallyHidden>
-          </CloseButton>
+          </UnstyledButton>
           <Nav>
             <NavLink href="/sale">Sale</NavLink>
             <NavLink href="/new">New&nbsp;Releases</NavLink>
@@ -54,7 +52,7 @@ const Overlay = styled(DialogOverlay)`
 `;
 const Content = styled(DialogContent)`
   position: relative;
-  background: ${COLORS.white};
+  background: var(--color-white);
   width: 300px;
   height: 100%;
 `;
@@ -66,13 +64,7 @@ const ChildrenWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
 `;
-const CloseButton = styled.button`
-  border: none;
-  background: transparent;
-  padding: 0;
-  align-self: flex-end;
-  cursor: pointer;
-`;
+
 const Nav = styled.nav`
   display: flex;
   flex-direction: column;
@@ -84,10 +76,10 @@ const NavLink = styled.a`
   font-size: ${18 / 16}rem;
   text-transform: uppercase;
   text-decoration: none;
-  color: ${COLORS.gray[900]};
-  font-weight: ${WEIGHTS.medium};
+  color: var(--color-gray-900);
+  font-weight: var(--font-medium);
   &:first-of-type {
-    color: ${COLORS.secondary};
+    color: var(--color-secondary);
   }
 `;
 
@@ -100,8 +92,8 @@ const Footer = styled.footer`
 const FooterLink = styled.a`
   font-size: ${14 / 16}rem;
   text-decoration: none;
-  color: ${COLORS.gray[700]};
-  font-weight: ${WEIGHTS.normal};
+  color: var(--color-gray-700);
+  font-weight: var(--font-normal);
 `;
 
 export default MobileMenu;
