@@ -21,9 +21,9 @@ const Header = () => {
     <header>
       <SuperHeader />
       <MainHeader>
-        <Side>
+        <LogoWrapper>
           <Logo />
-        </Side>
+        </LogoWrapper>
         <Nav>
           <NavLink href="/sale">Sale</NavLink>
           <NavLink href="/new">New&nbsp;Releases</NavLink>
@@ -48,7 +48,6 @@ const Header = () => {
           </UnstyledButton>
         </MobileNav>
       </MainHeader>
-
       <MobileMenu
         isOpen={showMobileMenu}
         onDismiss={() => setShowMobileMenu(false)}
@@ -63,6 +62,9 @@ const MainHeader = styled.div`
   padding: 18px 32px;
   height: 72px;
   border-bottom: 1px solid var(--color-gray-300);
+  @media ${QUERIES.tabletAndDown} {
+    border-top: 4px solid var(--color-gray-900);
+  }
 `;
 
 const Nav = styled.nav`
@@ -88,6 +90,12 @@ const MobileNav = styled.nav`
 
 const Side = styled.div`
   flex: 1;
+`;
+
+const LogoWrapper = styled(Side)`
+  @media ${QUERIES.tabletAndDown} {
+    flex: 0;
+  }
 `;
 
 const NavLink = styled.a`

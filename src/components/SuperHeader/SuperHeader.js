@@ -9,19 +9,16 @@ import Icon from "../Icon";
 
 const SuperHeader = () => {
   return (
-    <>
-      <Wrapper>
-        <MarketingMessage>
-          Free shipping on domestic orders over $75!
-        </MarketingMessage>
-        <SearchInput />
-        <HelpLink href="/help">Help</HelpLink>
-        <UnstyledButton>
-          <Icon id="shopping-bag" strokeWidth={1} />
-        </UnstyledButton>
-      </Wrapper>
-      <MobileHeader />
-    </>
+    <Wrapper>
+      <MarketingMessage>
+        Free shipping on domestic orders over $75!
+      </MarketingMessage>
+      <SearchInput />
+      <HelpLink href="/help">Help</HelpLink>
+      <UnstyledButton>
+        <Icon id="shopping-bag" strokeWidth={1} />
+      </UnstyledButton>
+    </Wrapper>
   );
 };
 
@@ -40,14 +37,6 @@ const Wrapper = styled.div`
   }
 `;
 
-const MobileHeader = styled.div`
-  display: none;
-  @media ${QUERIES.laptopAndDown} {
-    height: 4px;
-    background-color: var(--color-gray-900);
-    display: revert;
-  }
-`;
 const MarketingMessage = styled.span`
   color: var(--color-white);
   margin-right: auto;
